@@ -1,6 +1,6 @@
 {
   "name": "manage-postmark-mjml-templates-cli",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A basic utility tool to manage postmark templates with MJML",
   "main": "src/cli.js",
   "type": "module",
@@ -14,5 +14,9 @@
     "commander": "^9.4.1",
     "dotenv": "^16.0.3",
     "mjml": "^4.13.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/InsuranceMarket-ae/Manage-PMA.git"
   }
 }
