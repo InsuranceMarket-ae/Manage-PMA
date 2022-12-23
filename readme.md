@@ -1,10 +1,10 @@
 ## MANAGE MJPM (MJML + POSTMARK) 
 <p >A Basic CLI tool for managing templates when working wth MJML and Postmark.</p>
-<a href="https://www.npmjs.com/package/manage-postmark-mjml-templates-cli" target="_blank">
+<p align="center"><a  href="https://www.npmjs.com/package/manage-postmark-mjml-templates-cli" target="_blank">
 <img src="https://img.shields.io/npm/v/manage-postmark-mjml-templates-cli?style=for-the-badge" />
-</a>
+</a></p>
 
-<br/>
+
 <p>The CLI tool looks for a folder named "PMA", and inside PMA folder it looks for templates</p>
 
 Basically it follows this folder structure:
@@ -39,7 +39,17 @@ How does `meta.json`  file look like? It totally depends on your template's conf
 ```
 
 Side Note:
-The CLI tool is dependent on `mjml` and `postmark-cli`, if these packages are not installed the cli tool will try to install them or will fail to run.
+1. The CLI tool is dependent on `mjml` and `postmark-cli`, if these packages are not installed the cli tool will try to install them or will fail to run.
+2. For deployment you need to setup your server token in .env file as follows:
+
+```
+// .env
+
+PMA_STAGING= your_staging_server_token
+PMA_PROD= your_production_server_token
+
+```
+in-case if you're not using two environment, just put the same token in both variables.
 
 ## Usage
 
