@@ -1,5 +1,9 @@
 ## MANAGE MJPM (MJML + POSTMARK) 
 <p >A Basic CLI tool for managing templates when working wth MJML and Postmark.</p>
+<a href="https://www.npmjs.com/package/manage-postmark-mjml-templates-cli" target="_blank">
+<img src="https://img.shields.io/npm/v/manage-postmark-mjml-templates-cli?style=for-the-badge" />
+</a>
+
 <br/>
 <p>The CLI tool looks for a folder named "PMA", and inside PMA folder it looks for templates</p>
 
