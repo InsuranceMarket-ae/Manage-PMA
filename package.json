@@ -1,14 +1,11 @@
 {
-  "name": "manage-postmark-templates-cli",
-  "version": "1.0.0",
-  "description": "",
-  "main": "manage-pma-cli/index.js",
+  "name": "manage-postmark-mjml-templates-cli",
+  "version": "1.0.6",
+  "description": "A basic utility tool to manage postmark templates with MJML",
+  "main": "src/cli.js",
   "type": "module",
-  "scripts": {
-    "manage-pma": "node manage-pma-cli",
-    "deploy:prod": "yarn manage-pma deploy -e production",
-    "deploy:stage": "yarn manage-pma deploy -e staging",
-    "mjmlToHTML":"yarn manage-pma mjmlToHTML"
+  "bin": {
+    "manage-mjpm": "src/cli.js"
   },
   "author": "",
   "license": "ISC",
@@ -16,9 +13,6 @@
     "chalk": "^5.2.0",
     "commander": "^9.4.1",
     "dotenv": "^16.0.3",
-    "postmark-cli": "^1.6.14"
-  },
-  "devDependencies": {
     "mjml": "^4.13.0"
   }
 }

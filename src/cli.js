@@ -1,14 +1,18 @@
+#!/usr/bin/env node
 
 import { Command, } from 'commander';
 import deploy from './commands/deploy.js';
 import generateHTMLfromMJML from './commands/mjmlToHTML.js';
+import fs from 'fs';
 
+const packageJson = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
 const program = new Command();
-
+const version = packageJson.version
 program
     .name('deployment to postmark cli')
     .description('CLI to deploy our postmark templates to server with one command.')
-    .version('0.1');
+    .option('-v, --version', 'Display the version of the CLI.')
+    .version(version);
 
 
 program.command('mjmlToHTML')

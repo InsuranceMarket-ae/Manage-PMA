@@ -21,3 +21,20 @@ export const getListOfPMATemplates = async () => {
 
     return templates
 }
+
+
+export const tryNPM = async (packageName) => {
+    try {
+        await execAsync(`npm i ${packageName}`)
+    } catch (e) {
+        logger.error(e)
+        tryYarn(packageName)
+    }
+}
+const tryYarn = async (packageName) => {
+    try {
+        await execAsync(`yarn add ${packageName}`)
+    } catch (e) {
+        logger.error(e)
+    }
+}

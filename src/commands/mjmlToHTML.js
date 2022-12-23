@@ -2,7 +2,8 @@ import fs from 'fs'
 import path from 'node:path';
 import { MJML_PATH, PMA_TEMPLATES_PATH, MJML_MAIN_FILE_NAME, HTML_OUTPUT_FILE_NAME } from '../constants/index.js';
 import logger from '../helpers/logger.js';
-import { execAsync, fileExistsInTemplate, getListOfPMATemplates } from '../helpers/index.js';
+import { execAsync, fileExistsInTemplate, getListOfPMATemplates, tryNPM } from '../helpers/index.js';
+
 
 const getOverWrite = (options) => options?.overwrite == undefined ? true : options?.overwrite
 const cleanHTMLCode = async (options) => {
@@ -19,8 +20,17 @@ const cleanHTMLCode = async (options) => {
 }
 const generateHTMLfromMJML = async (options) => {
     try {
-        if (!fs.existsSync(MJML_PATH)) return logger.error("MJML not found, Please install dependencies using command 'npm i' or 'yarn' ")
-
+        if (!fs.existsSync(MJML_PATH)) {
+            await tryNPM('mjml')
+            if (!fs.existsSync(MJML_PATH)) return logger.error(`
+            MJML not found, Please install dependencies using yarn or npm \n\n
+            i.e:\n
+            yarn add mjml
+            \nOR\n
+            npm i mjml
+            
+            `)
+        }
         const folderName = options?.template;
         const overwrite = getOverWrite(options)
         if (folderName && !overwrite && fileExistsInTemplate(folderName, HTML_OUTPUT_FILE_NAME)) return logger.info(`Template '${folderName}' already has an HTML file,\n Please use --overwrite if you want to regenerate HTML`)

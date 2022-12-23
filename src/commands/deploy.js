@@ -4,13 +4,20 @@ import generateHTMLfromMJML from "./mjmlToHTML.js";
 import logger from "../helpers/logger.js";
 import { PMA_STAGING, PMA_PROD, ENV_PROD, ENV_STAGING, PMA_TEMPLATES_PATH } from "../constants/index.js";
 import { spawn } from 'node:child_process';
+import { tryNPM } from '../helpers/index.js';
 
 const deploy = async (options) => {
     try {
         const generateHTML = options.generateHTML
         console.log("generateHTML", generateHTML)
         const postmarkClI = path.resolve(path.dirname('./../'), './node_modules/postmark-cli')
-        if (!fs.existsSync(postmarkClI)) return logger.error(`postmark-cli not found, Please install dependencies using either yarn or npm, looking at ${postmarkClI}`)
+        if (!fs.existsSync(postmarkClI)) {
+            await tryNPM('postmark-cli')
+            if (!fs.existsSync(postmarkClI)) return logger.error(`
+            postmark-cli not found, Please install dependencies using either yarn add postmark-cli or npm i postmark-cli, 
+            
+            looking at ${postmarkClI}`)
+        }
         const environment = options?.environment;
         console.log("environment", JSON.stringify(environment))
         if (!environment) return logger.error(`Please provide --environment of your postmark server. i.e: ${ENV_STAGING} or ${ENV_PROD}`)
