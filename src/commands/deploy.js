@@ -37,21 +37,22 @@ const deploy = async (options) => {
                 env: {
                     POSTMARK_SERVER_TOKEN: environment == ENV_PROD ? PMA_PROD : PMA_STAGING,
                     ...process.env
-                }
+                },
+                stdio: 'inherit'
             }
         );
 
-        thirdPartyCLI.stdout.on('data', (data) => {
+        thirdPartyCLI?.stdout?.on?.('data', (data) => {
             logger.warn(`${data}`);
         });
 
-        thirdPartyCLI.on('close', (code) => {
+        thirdPartyCLI?.on?.('close', (code) => {
             if (code == 1) {
                 logger.error(`Something went wrong while deploying to postmark \n\n Please make sure you have correct env variables in .env file at root of the project.`)
             }
             logger.info(`Child process exited with code ${code}`);
         });
-        thirdPartyCLI.on('error', (code) => {
+        thirdPartyCLI?.on?.('error', (code) => {
             logger.error(`error in child process [postmark-cli]: ${code}`);
         });
     } catch (e) {

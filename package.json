@@ -1,6 +1,6 @@
 {
   "name": "manage-postmark-mjml-templates-cli",
-  "version": "1.0.7",
+  "version": "1.0.9",
   "description": "A basic utility tool to manage postmark templates with MJML",
   "main": "src/cli.js",
   "type": "module",
@@ -11,7 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "chalk": "^5.2.0",
-    "commander": "^9.4.1",
+    "commander": "^9.5.0",
     "dotenv": "^16.0.3",
     "mjml": "^4.13.0"
   },
