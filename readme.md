@@ -27,7 +27,7 @@ How does `meta.json`  file look like? It totally depends on your template's conf
 ```
 {
   "Name": "Template name",
-  "Alias": "template-alias",
+  "Alias": "template-alias", // Must be same as the folder name of the template.
   "Subject": "Your template subject",
   "TemplateType": "Standard",
   "LayoutTemplate": null,
